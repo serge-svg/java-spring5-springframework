@@ -11,7 +11,7 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigurator.class);
         InvoiceService invoiceService = context.getBean(InvoiceService.class);
         printInvoices(invoiceService.getAll());
-        
+        /*
         Invoice invoice1001 =  new Invoice(1003, "computer", 3000.0);
         Invoice invoice1002 =  new Invoice(1002, "screen", 100.0);
 
@@ -21,7 +21,7 @@ public class Main {
         invoiceService.insertAListOfInvoice(invoices);
                         
         printInvoices(invoiceService.getAll());
-        
+        */
     }
 
     private static void printInvoices(List<Invoice> invoices) {
