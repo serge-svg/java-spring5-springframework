@@ -1,6 +1,21 @@
 # Compiled class file
 *.class
 
+# Target folder
+target/
+
+# Build folder
+build/
+
+# Config files of Visual Code folder
+.vscode/
+
+# Config files of eclipse folder
+.settings/
+
+# Config files of intellij folder
+.idea/
+
 # Log file
 *.log
 
