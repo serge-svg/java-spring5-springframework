@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+    <tr th:each="invoice:${invoicesList}">
+        <td th:text="${invoice.number}"></td>
+        <td th:text="${invoice.concept}"></td>
+        <td th:text="${invoice.amount}"></td>
+        <td><a th:href="@{invoiceDelete(number=${invoice.number})}">Delete</a></td>
+        <td><a th:href="@{invoiceEditForm(number=${invoice.number})}">Editar</a></td>
+    </tr>    
+</table>
+<form th:action="@{invoiceNewForm}" >
+    <input type="submit" value="New"/>
+</form>
+</body>
+</html>

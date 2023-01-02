@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- action to bind with the method controller -->
+<!-- object to define the object of the controller method -->
+<form th:action="@{invoiceSaveForm}" th:object="${invoice}" method="POST">
+    <p>
+        Number: <input type="text" th:field="*{number}"/>
+    </p>
+    <p>
+        Concept: <input type="text" th:field="*{concept}"/>
+    </p>
+    <p>
+        Amount: <input type="text" th:field="*{amount}"/>
+    </p>
+    <input type="submit" value="Save"/>
+</form>
+</body>
+</html>
