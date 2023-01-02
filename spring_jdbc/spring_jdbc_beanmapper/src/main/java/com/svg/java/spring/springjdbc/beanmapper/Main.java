@@ -11,9 +11,9 @@ public class Main {
 
         try {
             InvoiceRepository invoiceRepository = context.getBean(InvoiceRepository.class);            
-            invoiceRepository.deleteAll();
+            //invoiceRepository.deleteAll();
             printInvoices(invoiceRepository.getAll());
-
+            /*
             Invoice invoice1001 =  new Invoice(1001, "computer", 1000.0);
             Invoice invoice1002 =  new Invoice(1002, "screen", 100.0);
             invoiceRepository.insert(invoice1001);
@@ -26,6 +26,7 @@ public class Main {
 
             invoiceRepository.delete(invoice1002);
             printInvoices(invoiceRepository.getAll());
+            */
         } catch (Exception e) {
             e.printStackTrace();
         }
