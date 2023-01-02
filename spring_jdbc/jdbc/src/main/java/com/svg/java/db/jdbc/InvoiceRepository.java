@@ -40,7 +40,7 @@ public class InvoiceRepository {
     }
 
     private Connection getConnection() throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/spring_course", "postgres", "password");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost/spring_course", "postgres", "");
         return connection;
     }
     
