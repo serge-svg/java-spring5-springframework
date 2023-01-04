@@ -8,8 +8,8 @@ This is a repository intended to serve as illustrative examples for the course [
 ## Dependencies
 
 * Spring framework  
- - https://mvnrepository.com/artifact/org.springframework/spring-core
- - https://mvnrepository.com/artifact/org.springframework/spring-context
+    - https://mvnrepository.com/artifact/org.springframework/spring-core
+    - https://mvnrepository.com/artifact/org.springframework/spring-context
 * Spring aspects  
  - https://mvnrepository.com/artifact/org.springframework/spring-aspects
  - https://mvnrepository.com/artifact/org.springframework/spring-aop
