@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- The option 'xmlns:sec="http://www.thymeleaf.org/extras/spring-security', allow us use security features as roles 'sec:authorize="hasRole('administrator')' -->
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Invoices</title>
 </head>
 <body>
 <table>
@@ -10,8 +12,9 @@
         <td th:text="${invoice.number}"></td>
         <td th:text="${invoice.concept}"></td>
         <td th:text="${invoice.amount}"></td>
-        <td><a th:href="@{invoiceDelete(number=${invoice.number})}">Delete</a></td>
-        <td><a th:href="@{invoiceEditForm(number=${invoice.number})}">Editar</a></td>
+        <!-- Allow us to protect access in frontend -->
+        <td sec:authorize="hasRole('administrator')"><a th:href="@{invoiceDelete(number=${invoice.number})}">Delete</a></td>
+        <td sec:authorize="hasAnyRole('administrator', 'advance', 'basic')"><a th:href="@{invoiceEditForm(number=${invoice.number})}">Editar</a></td>
     </tr>    
 </table>
 <form th:action="@{invoiceNewForm}" >

@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,7 @@ public class InvoiceRepository {
     }
 
     @Transactional
+    @Secured({"administrator"})
     public void delete(Invoice invoice) {
         em.remove(em.merge(invoice));
     }
@@ -38,11 +40,13 @@ public class InvoiceRepository {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
+    @Secured({"administrator", "advance"})
     public void update(Invoice invoice) {
         em.merge(invoice);
     }
 
     @Transactional
+    @Secured({"administrator"})
     public void deleteAll() {
         Query query = em.createQuery("DELETE FROM Invoice");        
 		int result = query.executeUpdate();

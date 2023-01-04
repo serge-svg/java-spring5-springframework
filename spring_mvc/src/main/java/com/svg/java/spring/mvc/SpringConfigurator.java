@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -17,6 +18,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -28,9 +30,10 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @ComponentScan("com.svg.java.spring.mvc")
 @EnableAspectJAutoProxy
 @EnableTransactionManagement
+@Import (SecurityConfigurator.class)
 public class SpringConfigurator implements ApplicationContextAware {
-	// To know which is the context of the application,
-	// to set of elements registered by spring as services, repository, ..
+	// To know which is the context of the application, in order to 
+	// set the registered classes by spring, as services, repository, ..
 	private ApplicationContext context;
 
 	@Bean
@@ -69,6 +72,7 @@ public class SpringConfigurator implements ApplicationContextAware {
 		SpringTemplateEngine engine = new SpringTemplateEngine();
 		engine.setEnableSpringELCompiler(true);
 		engine.setTemplateResolver(templateResolver());
+		engine.addDialect(new SpringSecurityDialect());
 		return engine;
 	}
 
